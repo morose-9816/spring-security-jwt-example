@@ -43,7 +43,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
 	        if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-	            UserDetails userDetails = userRepository.findUserByUsername(userName)
+	            UserDetails userDetails = userRepository.findUserByPsid(userName)
 	            							.orElseThrow(() -> new UsernameNotFoundException("User not present"));;
 
 	            if (jwtUtils.validateToken(token, userDetails)) {

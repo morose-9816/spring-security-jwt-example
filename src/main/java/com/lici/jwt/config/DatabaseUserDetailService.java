@@ -19,7 +19,7 @@ public class DatabaseUserDetailService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		 User user = userRepository.findUserByUsername(username)
+		 User user = userRepository.findUserByPsid(username)
 		         .orElseThrow(() -> new UsernameNotFoundException("User not present"));
 		 user.setPassword(passwordEncoder().encode(user.getPassword()));
 		return user; 

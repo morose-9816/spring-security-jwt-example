@@ -14,22 +14,22 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "db_users") 
 public class User implements UserDetails{
 	@Id
-	private String username;
+	private String psid;
 	
 	private String password;
-	@Column(name = "role_code")
-	private String roleCode;
+//	@Column(name = "role_code")
+//	private String roleCode;
+//
+//	public String getRoleCode() {
+//		return roleCode;
+//	}
+//
+//	public void setRoleCode(String roleCode) {
+//		this.roleCode = roleCode;
+//	}
 
-	public String getRoleCode() {
-		return roleCode;
-	}
-
-	public void setRoleCode(String roleCode) {
-		this.roleCode = roleCode;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
+	public void setPsid(String psid) {
+		this.psid = psid;
 	}
 	
 	public void setPassword(String password) {
@@ -48,7 +48,7 @@ public class User implements UserDetails{
 	
 	@Override
 	public String getUsername() {
-		return username;
+		return psid;
 	}
 	
 	@Override

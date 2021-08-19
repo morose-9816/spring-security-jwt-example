@@ -27,14 +27,16 @@ public class HomeController {
 
     @PostMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+    	
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
+                    new UsernamePasswordAuthenticationToken(authRequest.getPsid(), authRequest.getPassword())
             );
         } catch (Exception ex) {
+        	System.out.println("Here");
             throw new Exception("inavalid username/password");
         }
-        return jwtUtils.generateToken(authRequest.getUserName());
+        return jwtUtils.generateToken(authRequest.getPsid());
     }
 
 }
